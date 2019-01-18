@@ -44,5 +44,8 @@ This is a smart contract that allows users to place bets on future predictions o
 8. The oracle decides on the correct outcome of "false".
 9. The oracle withdraws his fee of 0.1 ether from the betting contract.
 10. User at address C withdraws winnings of 1.9 ether.
-11. User at address A and user at address B attempt to withdraw from the betting contract, both are denied.
+11. User at address A attempts to withdraw from the betting contract, this is denied as they have no winnings.
+12. User at address B attempts to withdraw from the betting contract, this is denied as they do not posess a betting position.
+
+
 
