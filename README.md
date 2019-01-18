@@ -5,11 +5,11 @@ This is a smart contract that allows users to place bets on future predictions o
 `Betting.sol`:
 - There is one contract owner, set to the address who deploys the contract.
 - The contract owner must specify: 
-  - The statement/assertion to be bet on
-  - The address of a trusted oracle
-  - The address of a trusted marketplace contract, if applicable
-  - The deadline for the oracle to make a decision, represented as a `Unix Time Stamp`
-  - The fee paid to the oracle given a completed decision 
+  - The `assertion` to be bet on
+  - The `address` of a trusted oracle
+  - The `address` of a trusted marketplace contract, if applicable
+  - The `deadline` for the oracle to make a decision, represented as a `Unix Time Stamp`
+  - The `fee` paid to the oracle given a completed decision 
   - The amount each gambler must bet in `wei` (1 `wei` = 1 * 10^18 `ether`)
 - Bets to the contract must contain both: the bet amount in ether and the gambler's predicted outcome (true or false)
 - The owner must make the first bet to the contract. 
