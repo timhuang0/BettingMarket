@@ -2,12 +2,12 @@ pragma solidity >=0.4.22 <0.6.0;
 
 contract Betting {
     
-    //fallback function
+    // fallback function
     function() external payable {
         revert();
     }
     
-    //public state variables
+    // public state variables
     address public owner;
     address public oracle;
     address public market;
@@ -52,7 +52,7 @@ contract Betting {
         winnerEarnings = _betAmount * 2 - _oracleFee;
     }
   
-    //mappings and modifiers
+    // mappings and modifiers
     mapping (bool => address) public bets;
     mapping (address => uint) public earnings;
     
@@ -83,7 +83,7 @@ contract Betting {
         _;
     }
     
-    //Bets on an outcome, first bet must be made by contract owner.
+    // Bets on an outcome, first bet must be made by contract owner.
     function makeBet(bool _outcome) public payable {
         require(isOwner() || (bets[_outcome] == address(0) && bets[!_outcome] != address(0)));
         require(!isOracle());
@@ -95,7 +95,7 @@ contract Betting {
         earnings[msg.sender] = betAmount;
     }
     
-    //Oracle imputs the correct outcome
+    // Oracle imputs the correct outcome
     function makeDecision(bool _outcome) public onlyOracle {
         require(now <= deadline);
         outcome = _outcome;
@@ -105,7 +105,7 @@ contract Betting {
         earnings[bets[!outcome]] = 0;
     }
     
-    //Check the outcome an address bet on 
+    // Check the outcome an address bet on 
     function checkBet(address _bettor) public view returns (bool) {
         require(bets[true] == _bettor || bets[false] == _bettor);
         if (bets[true] == _bettor) {
@@ -115,29 +115,29 @@ contract Betting {
         }
     }
     
-    //Check earnings of an address
+    // Check earnings of an address
     function checkEarnings(address _bettor) public view returns (uint) {
         return earnings[_bettor];
     }
     
-    //Withdraw ether from contract, only after decision made or deadline passed
+    // Withdraw ether from contract, only after decision made or deadline passed
     function withdraw() public {
         require(earnings[msg.sender] > 0);
         require(decisionMade || now > deadline);
         msg.sender.transfer(earnings[msg.sender]);
     }
     
-    //Public transfer function: send own betting position to another address
+    // Public transfer function: send own betting position to another address
     function transferBet(address _to) public {
         _transfer(msg.sender, _to);
     }
     
-    //Public transfer function accessible by trusted market
+    // Public transfer function accessible by trusted market
     function marketTransfer(address _from, address _to) public onlyMarket {
         _transfer(_from, _to);
     } 
     
-    //Private transfer function
+    // Private transfer function
     function _transfer(address _from, address _to) private {
         require(!decisionMade && _to != oracle);
         outcome = checkBet(_from);
