@@ -8,7 +8,7 @@ This is a smart contract that allows users to place bets on future predictions o
   - The `assertion` to be bet on
   - The `address` of a trusted oracle
   - The `address` of a trusted marketplace contract, if applicable
-  - The `deadline` for the oracle to make a decision, represented as a `Unix Time Stamp` - ex. 1/1/20 is 1577836800
+  - The `deadline` for the oracle to make a decision, represented as a `Unix Time Stamp` (ex. 1/1/20 is 1577836800)
   - The `oracleFee` paid to the oracle given a completed decision 
   - The `betAmount` each gambler must bet in `wei` (1 `wei` = 1 * 10^18 `ether`)
 - Bets to the contract must contain both: the bet amount in ether and the gambler's predicted outcome (true or false)
