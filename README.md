@@ -18,8 +18,21 @@ This is a smart contract that allows users to place bets on future predictions o
 - Only two bets can be placed.
 - The oracle must specify a decision before the deadline; else, they will not recieve a fee and both gamblers will be able to withdraw their original bet amount.
 - If a decision is made before the deadline, the owner of the winning bet will recieve all the funds bet minus the oracle fee.
-- Gamblers may choose to transfer their own betting position to another address as a token.
+- Gamblers can transfer their own betting position to another address as a token.
 
+## Specifications - BettingMarket.sol
+- There is one contract owner, set to the address who deploys the contract.
+- The contract constructor has no parameters.
+- Gamblers can place their betting positions for sale as a token.
+- To sell a bet, the gambler must specify: the address of the betting contract and the price.
+- Bets are tracked with a betId, incremented by 1 for each bet on the market.
+- Buyers can view the following attributes of a bet using its betId:
+  - assertion
+  - outcome
+  - winner earnings
+  - price
+- Purchases of a bet must contain: the betId and the price in ether.
+- After purchase, ownership of the bet is transfered to the buyer on the betting contract.
 
 
 
