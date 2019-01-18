@@ -20,6 +20,7 @@ contract bettingMarket {
     mapping (uint => Bet) bets;
     mapping (address => uint) public balance;
     
+    //Sell bet on the market, specify the address of the deployed Betting contract
     function sellBet(address payable _contractAddress, uint _price) public returns (uint) {
         Betting bc = Betting(_contractAddress);
         require(bc.checkEarnings(msg.sender) > 0);
@@ -38,6 +39,7 @@ contract bettingMarket {
         return b.betId;
     }
     
+    //Payable function to buy a bet from the market
     function buyBet(uint _betId) public payable {
         Bet memory b = bets[_betId];
         require(!b.sold || msg.value >= b.price);
@@ -48,6 +50,16 @@ contract bettingMarket {
         balance[b.seller] += b.price;
         b.sold = true;
     }
+    
+    //Withdraw funds from contract after bet is sold
+    function withdraw() public {
+        msg.sender.transfer(balance[msg.sender]);
+    }
+    
+    /*
+    View functions: allows potential buyers to access the attributes of a 
+    bet using its betId
+    */
     
     function checkAssertion(uint _betId) public view returns(string memory) {
         return bets[_betId].assertion;
@@ -65,9 +77,6 @@ contract bettingMarket {
         return bets[_betId].price;
     }
     
-    function withdraw() public {
-        msg.sender.transfer(balance[msg.sender]);
-    }
 }
     
     
