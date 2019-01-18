@@ -1,7 +1,7 @@
 # Betting Market
 Betting contract and betting market built on Solidity. 
 
-This is a smart contract that allows users to place bets on future predictions on the blockchain.
+This is a smart contract that allows users to place bets on future predictions on the blockchain and a smart contract that allows users to buy and sell betting positions.
 
 ## Specifications - Betting.sol
 - There is one contract owner, set to the address who deploys the contract.
@@ -11,7 +11,7 @@ This is a smart contract that allows users to place bets on future predictions o
   - The address of a trusted marketplace contract, if applicable
   - The deadline for the oracle to make a decision, represented as a Unix Time Stamp
   - The fee paid to the oracle given a completed decision 
-  - The amount each gambler must bet in wei (1 wei = 1 * 10^18 ether)
+  - The amount each gambler must bet in `wei` (1 wei = 1 * 10^18 ether)
 - Bets to the contract must contain both: the bet amount in ether and the gambler's predicted outcome (true or false)
 - The owner must make the first bet to the contract. 
 - The second bet can be made by any address other than the oracle. 
@@ -46,6 +46,16 @@ This is a smart contract that allows users to place bets on future predictions o
 10. User at address C withdraws winnings of 1.9 ether.
 11. User at address A attempts to withdraw from the betting contract, this is denied as they have no winnings.
 12. User at address B attempts to withdraw from the betting contract, this is denied as they do not posess a betting position.
+
+## Testing
+To test the code on a local development blockchain, transfer the code in `Betting.sol` and `BettingMarket.sol` to http://remix.ethereum.org. 
+
+In the compile sidebar tab, select compiler version `0.5.2+commit.1df8f40c.Emscripten.clang` and press Ctrl-S to compile. 
+
+In the run sidebar tab, select "Javascript VM" for the runtime environment. Select both contracts and press deploy. Once deployed, interact with the contracts in the Deployed Contracts sidebar. 
+
+To deploy the code to the Ethereum blockchain using Remix, download Metamask: https://metamask.io/ and select "Injected Web3" in the run sidebar tab.
+
 
 
 
