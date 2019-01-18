@@ -3,7 +3,8 @@ Betting contract and betting market built on Solidity.
 
 This is a smart contract that allows users to place bets on future predictions on the blockchain and a smart contract that allows users to buy and sell betting positions.
 
-## Specifications - `Betting.sol`
+## Specifications 
+`Betting.sol`:
 - There is one contract owner, set to the address who deploys the contract.
 - The contract owner must specify: 
   - The statement/assertion to be bet on
