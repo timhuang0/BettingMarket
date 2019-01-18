@@ -20,7 +20,7 @@ contract bettingMarket {
     mapping (uint => Bet) bets;
     mapping (address => uint) public balance;
     
-    //Sell bet on the market, specify the address of the deployed Betting contract
+    // Sell bet on the market, specify the address of the deployed Betting contract
     function sellBet(address payable _contractAddress, uint _price) public returns (uint) {
         Betting bc = Betting(_contractAddress);
         require(bc.checkEarnings(msg.sender) > 0);
@@ -51,7 +51,7 @@ contract bettingMarket {
         b.sold = true;
     }
     
-    //Withdraw funds from contract after bet is sold
+    // Withdraw funds from contract after bet is sold
     function withdraw() public {
         msg.sender.transfer(balance[msg.sender]);
     }
