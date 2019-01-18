@@ -1,5 +1,5 @@
 # Betting Market
-This is a smart contract that allows users to place bets on future predictions on the blockchain and a marketplace that allows users to buy and sell betting positions.
+This is a smart contract that allows users to place bets on future predictions on the blockchain and a marketplace that allows users to buy and sell betting positions. I wrote this program in solidity and tested on a local development blockchain with `Truffle`: https://truffleframework.com/ and `Ganache`: https://truffleframework.com/ganache.
 
 ## Specifications 
 `Betting.sol`:
